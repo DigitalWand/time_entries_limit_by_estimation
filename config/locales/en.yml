@@ -1,0 +1,2 @@
+ru:
+  can_not_be_noted: "Can't add %{hours} hours to spent time. Only %{limit} hours remains for task finish. Ask your teamlead ot manager for help."
