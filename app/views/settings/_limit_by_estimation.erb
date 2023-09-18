@@ -1,0 +1,22 @@
+<%
+  default = Setting.available_settings[SETTINGS_NAME.to_s]['default']
+%>
+<table>
+  <tbody>
+
+    <tr>
+      <th align="right"><%= t 'use_custom_field' %></th>
+      <td colspan="2">
+        <%=check_box_tag("settings[estimated_field_use]",1, settings['estimated_field_use']) %>
+      </td>
+    </tr>
+
+    <tr>
+      <th align="right"><%= t 'estimation_limit_custom_field' %></th>
+      <td colspan="2">
+        <%= select_tag("settings[estimated_field]",
+            options_from_collection_for_select(IssueCustomField.where(field_format: 'float').all, "id", "name", settings['estimated_field'])) %>
+      </td>
+    </tr>
+ </tbody>
+</table>
