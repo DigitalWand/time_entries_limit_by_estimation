@@ -21,14 +21,21 @@ module TimeEntryPatch
     end
 
     def correct_hours
-      if (issue.estimated_hours.nil? || issue.estimated_hours == 0)
+      estimated = 0
+#      begin
+        estimated = issue.estimated_internal
+ #     rescue
+  #      estimated = issue.estimated_hours
+   #   end
+
+      if (estimated.nil? || estimated == 0)
         errors.add :base, l('can_not_be_noted', {
           hours: hours.round(2),
           limit: 0
         })
       else 
         max_ratio = 1.0 
-        available_limit = issue.estimated_hours * max_ratio - (issue.total_spent_hours - (hours_was||0))
+        available_limit = estimated * max_ratio - (issue.total_spent_hours - (hours_was||0))
 
         time_left = (available_limit - hours).round(2)
         if (time_left) < 0

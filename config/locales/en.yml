@@ -1,2 +1,4 @@
 ru:
   can_not_be_noted: "Can't add %{hours} hours to spent time. Only %{limit} hours remains for task finish. Ask your teamlead ot manager for help."
+  use_custom_field: "Use custom field to apply limit"
+  estimation_limit_custom_field: "Custom field to apply estimation time limit check"
